@@ -1,0 +1,24 @@
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.io.FileUtils;
+
+这些是那些包的路径，废话不多说，直接上代码
+
+File file = new File("/data/train_data/hunan.json");
+
+        String file1 = FileUtils.readFileToString(file);//前面两行是读取文件
+
+            JSONObject jsonobject = JSON.parseObject(file1);
+
+            JSONArray features = jsonobject.getJSONArray("features");//解析的是json数组
+            for (int i=0;i<features.size();i++) {
+                String ff = features.getJSONObject(i).getString("properties");
+                JSONObject jsonObject = JSON.parseObject(ff);
+                System.out.print("cp:"+JSON.parseObject(ff).getJSONArray("cp").get(0)+"  "+JSON.parseObject(ff).getJSONArray("cp").get(1));   //这一行是解析cp数组里的东西
+                System.out.print(ff+"  ");
+                System.out.print("childNum:"+jsonObject.getString("childNum")+"   ");
+                System.out.print("id:"+jsonObject.getString("id")+"   ");
+                System.out.println("name:"+jsonObject.getString("name"));
+
+            }

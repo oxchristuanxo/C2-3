@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+<insert id="insertCoun" parameterType="com.A.Country">
+    insert into country values(#{country},#{population},#{sq_km_area},#{life_expectancy},#{elevation_in_meters},#{continent},#{abbreviation},#{location},#{iso},#{capital_city},#{confirmed},#{recovered},#{deaths})
+</insert>
+    <insert id="insertArea" parameterType="com.A.Area">
+    insert into area values(#{name},#{lat},#{Long},#{confirmed},#{recovered},#{deaths},#{updated},#{id})
+</insert>
+    <delete id="deletecoun" parameterType="String">
+ delete from country where country=#{country}
+</delete>
+    <delete id="deletearea" parameterType="String">
+ delete from area where id=#{id}
+</delete>
+</mapper>
